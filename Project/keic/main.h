@@ -1,6 +1,6 @@
 #include "GPIO.h"
 #include "RCC.h"
-#include "ADC.h"
-#include "PWM.h"
+#include "SPI.h"
+#include "TIM2.h"
 
 int main (void);

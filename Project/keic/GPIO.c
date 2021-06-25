@@ -9,7 +9,6 @@ void GPIO (void){
 	GPIOC->CRH &= ~GPIO_CRH_CNF13;//general purpose output push-pull
 	
 	GPIOC->CRH &= ~GPIO_CRH_MODE13;
-		// GPIO PA8 out put dung PWM
 	
 	// MODE 10: Alternate function output Push-pull
 	RCC->APB2ENR |= RCC_APB2ENR_IOPAEN;
