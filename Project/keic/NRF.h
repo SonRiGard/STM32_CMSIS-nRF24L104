@@ -31,9 +31,15 @@
 #define TX_DS 0x20 //Data Sent TX FIFO interrupt
 #define MAX_RT 0x10 //Maximum number of TX retransmits interrupt
 //-----------------------------------------------
-#define W_REGISTER 0x20 //запись в dеaис?d
+#define W_REGISTER 0x20 //command Write
 //-----------------------------------------------------------------------
 
 uint8_t NRF24_ReadReg(uint8_t addr);
 void NRF24_WriteReg(uint8_t addr, uint8_t dt);
 void NRF24_ToggleFeatures (void);
+void NRF24_Write_Buf(uint8_t addr,uint8_t *RxData,uint8_t bytes);
+void NRF24_Read_Buf(uint8_t addr,uint8_t *RxData,uint8_t bytes);
+void NRF24_FlushTX(void);
+void NRF24_FlushRX(void);
+
+

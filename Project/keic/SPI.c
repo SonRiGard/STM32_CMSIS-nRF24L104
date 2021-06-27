@@ -169,19 +169,21 @@ void SPI_Transmit (uint8_t *Data, uint8_t size)
 void SPI_Receiver (uint8_t *Data , uint8_t size)
 {
 	int i=0;
-	/*
 	//Disable SPI Peripheral before set 1Line direction (BIDIOE bit) 
 	RCC->APB1ENR &= ~RCC_APB1ENR_SPI2EN;
 	//RXNE behavior in receive-only mode
-	SPI2->CR1 |= SPI_CR1_BIDIOE;//BIDIOE=1
-	SPI2->CR1 |= SPI_CR1_RXONLY;//RXONLY=1
+	SPI2->CR1 &= ~SPI_CR1_BIDIOE;//BIDIOE=1
+	//SPI2->CR1 |= SPI_CR1_RXONLY;//RXONLY=1
 	//enable again
 	RCC->APB1ENR |= RCC_APB1ENR_SPI2EN;	
-	*/
+	
 	for(i=0; i<size; i++)
 	{
 		while(!(READ_BIT(SPI1->SR, SPI_SR_RXNE) == (SPI_SR_RXNE))) {}
 		Data[i] = SPI1->DR;
 	}
+	//Disable SPI Peripheral =>end Rx transaction
+	RCC->APB1ENR &= ~RCC_APB1ENR_SPI2EN;
 }
+
 
