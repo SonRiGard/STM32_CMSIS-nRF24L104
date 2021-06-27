@@ -1,65 +1,0 @@
-Dependencies for Project 'DKmotor', Target 'Target 1': (DO NOT MODIFY !)
-CompilerVersion: 5060960::V5.06 update 7 (build 960)::.\ARMCC
-F (..\..\Lib\CMSIS\CM3\CoreSupport\core_cm3.c)(0x4C0C9ECE)(-c --cpu Cortex-M3 -g -O0 --apcs=interwork --split_sections -I ..\..\Project -I ..\..\Lib\CMSIS\CM3\CoreSupport -I ..\..\Lib\STM32F10x_StdPeriph_Driver\inc -I ..\..\Lib\STM32F10x_StdPeriph_Driver\src -I ..\..\Lib\CMSIS\CM3\DeviceSupport\ST\STM32F10x\startup\arm -I ..\keic-IC:\Users\heozu\AppData\Local\Arm\Packs\Keil\STM32F1xx_DFP\2.3.0\Device\Include-D__UVISION_VERSION="534" -DSTM32F10X_MD-o .\objects\core_cm3.o --omf_browse .\objects\core_cm3.crf --depend .\objects\core_cm3.d)
-I (C:\Keil_v5\ARM\ARMCC\include\stdint.h)(0x5E8E8312)
-F (..\..\Lib\CMSIS\CM3\DeviceSupport\ST\STM32F10x\startup\arm\startup_stm32f10x_md.s)(0x4D788322)(--cpu Cortex-M3 -g --apcs=interwork -IC:\Users\heozu\AppData\Local\Arm\Packs\Keil\STM32F1xx_DFP\2.3.0\Device\Include--pd "__UVISION_VERSION SETA 534" --pd "STM32F10X_MD SETA 1"--list .\listings\startup_stm32f10x_md.lst --xref -o .\objects\startup_stm32f10x_md.o --depend .\objects\startup_stm32f10x_md.d)
-F (..\stm32f10x_it.c)(0x4D99EBEE)(-c --cpu Cortex-M3 -g -O0 --apcs=interwork --split_sections -I ..\..\Project -I ..\..\Lib\CMSIS\CM3\CoreSupport -I ..\..\Lib\STM32F10x_StdPeriph_Driver\inc -I ..\..\Lib\STM32F10x_StdPeriph_Driver\src -I ..\..\Lib\CMSIS\CM3\DeviceSupport\ST\STM32F10x\startup\arm -I ..\keic-IC:\Users\heozu\AppData\Local\Arm\Packs\Keil\STM32F1xx_DFP\2.3.0\Device\Include-D__UVISION_VERSION="534" -DSTM32F10X_MD-o .\objects\stm32f10x_it.o --omf_browse .\objects\stm32f10x_it.crf --depend .\objects\stm32f10x_it.d)
-I (..\stm32f10x_it.h)(0x4D99EBEE)
-I (C:\Users\heozu\AppData\Local\Arm\Packs\Keil\STM32F1xx_DFP\2.3.0\Device\Include\stm32f10x.h)(0x58257EBC)
-I (..\..\Lib\CMSIS\CM3\CoreSupport\core_cm3.h)(0x4D5281A8)
-I (C:\Keil_v5\ARM\ARMCC\include\stdint.h)(0x5E8E8312)
-I (C:\Users\heozu\AppData\Local\Arm\Packs\Keil\STM32F1xx_DFP\2.3.0\Device\Include\system_stm32f10x.h)(0x58257EBC)
-F (..\system_stm32f10x.c)(0x4D99EBEE)(-c --cpu Cortex-M3 -g -O0 --apcs=interwork --split_sections -I ..\..\Project -I ..\..\Lib\CMSIS\CM3\CoreSupport -I ..\..\Lib\STM32F10x_StdPeriph_Driver\inc -I ..\..\Lib\STM32F10x_StdPeriph_Driver\src -I ..\..\Lib\CMSIS\CM3\DeviceSupport\ST\STM32F10x\startup\arm -I ..\keic-IC:\Users\heozu\AppData\Local\Arm\Packs\Keil\STM32F1xx_DFP\2.3.0\Device\Include-D__UVISION_VERSION="534" -DSTM32F10X_MD-o .\objects\system_stm32f10x.o --omf_browse .\objects\system_stm32f10x.crf --depend .\objects\system_stm32f10x.d)
-I (C:\Users\heozu\AppData\Local\Arm\Packs\Keil\STM32F1xx_DFP\2.3.0\Device\Include\stm32f10x.h)(0x58257EBC)
-I (..\..\Lib\CMSIS\CM3\CoreSupport\core_cm3.h)(0x4D5281A8)
-I (C:\Keil_v5\ARM\ARMCC\include\stdint.h)(0x5E8E8312)
-I (C:\Users\heozu\AppData\Local\Arm\Packs\Keil\STM32F1xx_DFP\2.3.0\Device\Include\system_stm32f10x.h)(0x58257EBC)
-F (.\GPIO.c)(0x60D3DDB4)(-c --cpu Cortex-M3 -g -O0 --apcs=interwork --split_sections -I ..\..\Project -I ..\..\Lib\CMSIS\CM3\CoreSupport -I ..\..\Lib\STM32F10x_StdPeriph_Driver\inc -I ..\..\Lib\STM32F10x_StdPeriph_Driver\src -I ..\..\Lib\CMSIS\CM3\DeviceSupport\ST\STM32F10x\startup\arm -I ..\keic-IC:\Users\heozu\AppData\Local\Arm\Packs\Keil\STM32F1xx_DFP\2.3.0\Device\Include-D__UVISION_VERSION="534" -DSTM32F10X_MD-o .\objects\gpio.o --omf_browse .\objects\gpio.crf --depend .\objects\gpio.d)
-I (GPIO.h)(0x5F5A2608)
-I (C:\Users\heozu\AppData\Local\Arm\Packs\Keil\STM32F1xx_DFP\2.3.0\Device\Include\stm32f10x.h)(0x58257EBC)
-I (..\..\Lib\CMSIS\CM3\CoreSupport\core_cm3.h)(0x4D5281A8)
-I (C:\Keil_v5\ARM\ARMCC\include\stdint.h)(0x5E8E8312)
-I (C:\Users\heozu\AppData\Local\Arm\Packs\Keil\STM32F1xx_DFP\2.3.0\Device\Include\system_stm32f10x.h)(0x58257EBC)
-F (.\GPIO.h)(0x5F5A2608)()
-F (.\RCC.c)(0x60D3DDB4)(-c --cpu Cortex-M3 -g -O0 --apcs=interwork --split_sections -I ..\..\Project -I ..\..\Lib\CMSIS\CM3\CoreSupport -I ..\..\Lib\STM32F10x_StdPeriph_Driver\inc -I ..\..\Lib\STM32F10x_StdPeriph_Driver\src -I ..\..\Lib\CMSIS\CM3\DeviceSupport\ST\STM32F10x\startup\arm -I ..\keic-IC:\Users\heozu\AppData\Local\Arm\Packs\Keil\STM32F1xx_DFP\2.3.0\Device\Include-D__UVISION_VERSION="534" -DSTM32F10X_MD-o .\objects\rcc.o --omf_browse .\objects\rcc.crf --depend .\objects\rcc.d)
-I (RCC.h)(0x5F5A2608)
-I (C:\Users\heozu\AppData\Local\Arm\Packs\Keil\STM32F1xx_DFP\2.3.0\Device\Include\stm32f10x.h)(0x58257EBC)
-I (..\..\Lib\CMSIS\CM3\CoreSupport\core_cm3.h)(0x4D5281A8)
-I (C:\Keil_v5\ARM\ARMCC\include\stdint.h)(0x5E8E8312)
-I (C:\Users\heozu\AppData\Local\Arm\Packs\Keil\STM32F1xx_DFP\2.3.0\Device\Include\system_stm32f10x.h)(0x58257EBC)
-F (.\RCC.h)(0x5F5A2608)()
-F (.\main.h)(0x60D48778)()
-F (.\SPI.c)(0x60D48A99)(-c --cpu Cortex-M3 -g -O0 --apcs=interwork --split_sections -I ..\..\Project -I ..\..\Lib\CMSIS\CM3\CoreSupport -I ..\..\Lib\STM32F10x_StdPeriph_Driver\inc -I ..\..\Lib\STM32F10x_StdPeriph_Driver\src -I ..\..\Lib\CMSIS\CM3\DeviceSupport\ST\STM32F10x\startup\arm -I ..\keic-IC:\Users\heozu\AppData\Local\Arm\Packs\Keil\STM32F1xx_DFP\2.3.0\Device\Include-D__UVISION_VERSION="534" -DSTM32F10X_MD-o .\objects\spi.o --omf_browse .\objects\spi.crf --depend .\objects\spi.d)
-I (SPI.h)(0x60D48AC6)
-I (C:\Users\heozu\AppData\Local\Arm\Packs\Keil\STM32F1xx_DFP\2.3.0\Device\Include\stm32f10x.h)(0x58257EBC)
-I (..\..\Lib\CMSIS\CM3\CoreSupport\core_cm3.h)(0x4D5281A8)
-I (C:\Keil_v5\ARM\ARMCC\include\stdint.h)(0x5E8E8312)
-I (C:\Users\heozu\AppData\Local\Arm\Packs\Keil\STM32F1xx_DFP\2.3.0\Device\Include\system_stm32f10x.h)(0x58257EBC)
-F (.\SPI.h)(0x60D48AC6)()
-F (..\main.c)(0x60D3DDB5)(-c --cpu Cortex-M3 -g -O0 --apcs=interwork --split_sections -I ..\..\Project -I ..\..\Lib\CMSIS\CM3\CoreSupport -I ..\..\Lib\STM32F10x_StdPeriph_Driver\inc -I ..\..\Lib\STM32F10x_StdPeriph_Driver\src -I ..\..\Lib\CMSIS\CM3\DeviceSupport\ST\STM32F10x\startup\arm -I ..\keic-IC:\Users\heozu\AppData\Local\Arm\Packs\Keil\STM32F1xx_DFP\2.3.0\Device\Include-D__UVISION_VERSION="534" -DSTM32F10X_MD-o .\objects\main.o --omf_browse .\objects\main.crf --depend .\objects\main.d)
-I (..\keic\main.h)(0x60D48778)
-I (..\keic\GPIO.h)(0x5F5A2608)
-I (C:\Users\heozu\AppData\Local\Arm\Packs\Keil\STM32F1xx_DFP\2.3.0\Device\Include\stm32f10x.h)(0x58257EBC)
-I (..\..\Lib\CMSIS\CM3\CoreSupport\core_cm3.h)(0x4D5281A8)
-I (C:\Keil_v5\ARM\ARMCC\include\stdint.h)(0x5E8E8312)
-I (C:\Users\heozu\AppData\Local\Arm\Packs\Keil\STM32F1xx_DFP\2.3.0\Device\Include\system_stm32f10x.h)(0x58257EBC)
-I (..\keic\RCC.h)(0x5F5A2608)
-I (..\keic\SPI.h)(0x60D48AC6)
-I (..\keic\TIM2.h)(0x60D48C8D)
-I (C:\Keil_v5\ARM\ARMCC\include\stdio.h)(0x5E8E8312)
-F (.\NRF.c)(0x60D48CD6)(-c --cpu Cortex-M3 -g -O0 --apcs=interwork --split_sections -I ..\..\Project -I ..\..\Lib\CMSIS\CM3\CoreSupport -I ..\..\Lib\STM32F10x_StdPeriph_Driver\inc -I ..\..\Lib\STM32F10x_StdPeriph_Driver\src -I ..\..\Lib\CMSIS\CM3\DeviceSupport\ST\STM32F10x\startup\arm -I ..\keic-IC:\Users\heozu\AppData\Local\Arm\Packs\Keil\STM32F1xx_DFP\2.3.0\Device\Include-D__UVISION_VERSION="534" -DSTM32F10X_MD-o .\objects\nrf.o --omf_browse .\objects\nrf.crf --depend .\objects\nrf.d)
-I (NRF.h)(0x60D3DDB2)
-I (C:\Users\heozu\AppData\Local\Arm\Packs\Keil\STM32F1xx_DFP\2.3.0\Device\Include\stm32f10x.h)(0x58257EBC)
-I (..\..\Lib\CMSIS\CM3\CoreSupport\core_cm3.h)(0x4D5281A8)
-I (C:\Keil_v5\ARM\ARMCC\include\stdint.h)(0x5E8E8312)
-I (C:\Users\heozu\AppData\Local\Arm\Packs\Keil\STM32F1xx_DFP\2.3.0\Device\Include\system_stm32f10x.h)(0x58257EBC)
-I (SPI.h)(0x60D48AC6)
-I (TIM2.h)(0x60D48C8D)
-F (.\NRF.h)(0x60D3DDB2)()
-F (.\TIM2.c)(0x60D48CD6)(-c --cpu Cortex-M3 -g -O0 --apcs=interwork --split_sections -I ..\..\Project -I ..\..\Lib\CMSIS\CM3\CoreSupport -I ..\..\Lib\STM32F10x_StdPeriph_Driver\inc -I ..\..\Lib\STM32F10x_StdPeriph_Driver\src -I ..\..\Lib\CMSIS\CM3\DeviceSupport\ST\STM32F10x\startup\arm -I ..\keic-IC:\Users\heozu\AppData\Local\Arm\Packs\Keil\STM32F1xx_DFP\2.3.0\Device\Include-D__UVISION_VERSION="534" -DSTM32F10X_MD-o .\objects\tim2.o --omf_browse .\objects\tim2.crf --depend .\objects\tim2.d)
-I (TIM2.h)(0x60D48C8D)
-I (C:\Users\heozu\AppData\Local\Arm\Packs\Keil\STM32F1xx_DFP\2.3.0\Device\Include\stm32f10x.h)(0x58257EBC)
-I (..\..\Lib\CMSIS\CM3\CoreSupport\core_cm3.h)(0x4D5281A8)
-I (C:\Keil_v5\ARM\ARMCC\include\stdint.h)(0x5E8E8312)
-I (C:\Users\heozu\AppData\Local\Arm\Packs\Keil\STM32F1xx_DFP\2.3.0\Device\Include\system_stm32f10x.h)(0x58257EBC)
-F (.\TIM2.h)(0x60D48C8D)()
