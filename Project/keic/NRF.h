@@ -41,5 +41,6 @@ void NRF24_Write_Buf(uint8_t addr,uint8_t *RxData,uint8_t bytes);
 void NRF24_Read_Buf(uint8_t addr,uint8_t *RxData,uint8_t bytes);
 void NRF24_FlushTX(void);
 void NRF24_FlushRX(void);
+void NRF24L01_RX_Mode(void);
 
 

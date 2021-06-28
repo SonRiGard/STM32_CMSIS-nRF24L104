@@ -25,11 +25,10 @@ void NRF24_ini(void)
 	NRF24_WriteReg(STATUS, 0x70); //Reset flags for IRQ
 	NRF24_WriteReg(RF_CH, 76); // f = 2476 MHz
 	NRF24_WriteReg(RF_SETUP, 0x06); //TX_PWR:0dBm, Datarate:1Mbps
-	NRF24_Write_Buf(TX_ADDR, TX_ADDRESS, TX_ADR_WIDTH);//----------------------------------
-	NRF24_Write_Buf(RX_ADDR_P1, TX_ADDRESS, TX_ADR_WIDTH);//?>?????????????
+	NRF24_Write_Buf(TX_ADDR, TX_ADDRESS, TX_ADR_WIDTH);
+	NRF24_Write_Buf(RX_ADDR_P1, TX_ADDRESS, TX_ADR_WIDTH);
 	NRF24_WriteReg(RX_PW_P1, TX_PLOAD_WIDTH); //Number of bytes in RX payload in data pipe 1
-
-	
+	NRF24L01_RX_Mode();	
 }
 
 uint8_t NRF24_ReadReg(uint8_t addr)
@@ -84,14 +83,14 @@ void NRF24_Read_Buf(uint8_t addr,uint8_t *RxData,uint8_t bytes)
   CS_OFF();
 }
 
-void NRF24_Write_Buf(uint8_t addr,uint8_t *RxData,uint8_t bytes)
+void NRF24_Write_Buf(uint8_t addr,uint8_t *pBuf,uint8_t bytes)
 {
 	uint8_t TxData[1];
 	TxData[0] = addr|W_REGISTER;
   CS_ON();
 	SPI_Transmit(TxData,1);
   DelayMicro(1);
-  SPI_Transmit(RxData,bytes);
+  SPI_Transmit(pBuf,bytes);
   CS_OFF();
 }
 //------------------------------------------------
@@ -117,15 +116,52 @@ void NRF24_FlushTX(void)
 
 void NRF24L01_RX_Mode(void)
 {
+	//set the PWR_UP and PRIM_RX bit to 1
   uint8_t regval=0x00;
   regval = NRF24_ReadReg(CONFIG);
   regval |= (1<<PWR_UP)|(1<<PRIM_RX);
   NRF24_WriteReg(CONFIG,regval);
+	// Disable Pipe1
+	NRF24_WriteReg(EN_AA, 0x00); 
+	//Setup address width=3 bytes
+	NRF24_WriteReg(SETUP_AW, 0x01);
+	// f = 2476 MHz the same frequency chanel with Tx 
+	NRF24_WriteReg(RF_CH, 76); 
+	//set the data rate TX_PWR:0dBm, Datarate:1Mbps 
+	NRF24_WriteReg(RF_SETUP, 0x06); 
   CE_ON();
   DelayMicro(150); //wait 130us
   // Flush buffers
   NRF24_FlushRX();
   NRF24_FlushTX();
 }
-
 //------------------------------------------------
+void NRF24L01_TX_Mode (void)
+{
+	//set the PRIM_RX bit to 0
+	uint8_t regval=0x00;
+  regval = NRF24_ReadReg(CONFIG);
+  regval &= ~(1<<PRIM_RX);
+	NRF24_WriteReg(CONFIG,regval);
+	//1500us, 15 retrans
+	NRF24_WriteReg(SETUP_RETR, 0x5F); 
+	//Setup address width=3 bytes
+	NRF24_WriteReg(SETUP_AW, 0x01);
+	// f = 2476 MHz the same frequency chanel with Tx 
+	NRF24_WriteReg(RF_CH, 76); 
+	//set the data rate TX_PWR:0dBm, Datarate:1Mbps 
+	NRF24_WriteReg(RF_SETUP, 0x06); 
+	//set the PWR_UP to high
+  regval = NRF24_ReadReg(CONFIG);
+  regval |= (1<<PWR_UP);
+	NRF24_WriteReg(CONFIG,regval);
+		
+	CE_ON();//Pulse CE to transmit packet
+  DelayMicro(150); //wait 130us
+  // Flush buffers
+  NRF24_FlushRX();
+  NRF24_FlushTX();
+}
+
+
+
