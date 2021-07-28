@@ -24,6 +24,17 @@
 #define FIFO_STATUS 0x17 //'FIFO Status Register' register address
 #define DYNPD 0x1C
 #define FEATURE 0x1D
+#define RX_ADDR_P1  0x0B
+#define RX_ADDR_P2  0x0C
+#define RX_ADDR_P3  0x0D
+#define RX_ADDR_P4  0x0E
+#define RX_ADDR_P5  0x0F
+#define RX_PW_P0    0x11
+#define RX_PW_P1    0x12
+#define RX_PW_P2    0x13
+#define RX_PW_P3    0x14
+#define RX_PW_P4    0x15
+#define RX_PW_P5    0x16
 //------------------------------------------------
 #define PRIM_RX 0x00 //RX/TX control (1: PRX, 0: PTX)
 #define PWR_UP 0x01 //1: POWER UP, 0:POWER DOWN
@@ -33,7 +44,11 @@
 //-----------------------------------------------
 #define W_REGISTER 0x20 //command Write
 //-----------------------------------------------------------------------
-
+void NRF24_Tx_ini(void);
+void NRF24_Transmit (uint8_t *data);
+void NRF24_Rx_ini(void);
+void NRF24_Receive (uint8_t *data);
+void NRF24_reset(uint8_t REG);
 uint8_t NRF24_ReadReg(uint8_t addr);
 void NRF24_WriteReg(uint8_t addr, uint8_t dt);
 void NRF24_ToggleFeatures (void);
@@ -42,5 +57,8 @@ void NRF24_Read_Buf(uint8_t addr,uint8_t *RxData,uint8_t bytes);
 void NRF24_FlushTX(void);
 void NRF24_FlushRX(void);
 void NRF24L01_RX_Mode(void);
-
-
+void NRF24L01_TX_Mode (void);
+void read_1_reg(uint8_t reg,uint8_t *Rxdata);
+void write_1_reg(uint8_t reg,uint8_t data);
+void NRF24L01P_SingleWrite_Register(uint8_t RegAdd, uint8_t Data);
+uint8_t NRF24L01P_Read_Register(uint8_t RegAdd);

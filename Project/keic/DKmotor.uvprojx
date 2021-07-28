@@ -468,6 +468,16 @@
               <FileType>5</FileType>
               <FilePath>.\TIM2.h</FilePath>
             </File>
+            <File>
+              <FileName>ADC.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>.\ADC.h</FilePath>
+            </File>
+            <File>
+              <FileName>ADC1.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>.\ADC1.c</FilePath>
+            </File>
           </Files>
         </Group>
       </Groups>

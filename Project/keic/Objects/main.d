@@ -8,4 +8,5 @@
 .\objects\main.o: ..\keic\RCC.h
 .\objects\main.o: ..\keic\SPI.h
 .\objects\main.o: ..\keic\TIM2.h
-.\objects\main.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\stdio.h
+.\objects\main.o: ..\keic\NRF.h
+.\objects\main.o: ..\keic\ADC.h

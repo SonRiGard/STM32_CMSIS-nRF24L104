@@ -10,3 +10,7 @@ void SPI_TransmitReceive(uint8_t *TxData, uint8_t *RxData, uint8_t Size);
 void SPI_Transmit (uint8_t *Data, uint8_t size);
 void SPI_Receiver (uint8_t *Data , uint8_t size);
 
+
+
+void SPI1_Init (void);
+void SPI1_Denit(void);
