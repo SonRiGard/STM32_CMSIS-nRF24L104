@@ -61,7 +61,7 @@ void NRF24_Tx_ini(void)
 	NRF24_reset(0);
 	NRF24_WriteReg(EN_AA, 0);
 	NRF24_WriteReg(EN_RXADDR, 0);
-	NRF24_WriteReg(SETUP_AW, 0x11);// 5 Bytes for the TX/RX address
+	NRF24_WriteReg(SETUP_AW, 0x03);// 5 Bytes for the TX/RX address
 	NRF24_WriteReg(SETUP_RETR, 0x05);//retransmit 5 time + wait 250 us
 	NRF24_WriteReg(RF_CH, 76);// period 2476 MHz	
 	NRF24_WriteReg(RF_SETUP, 0x06 );//TX_PWR:0dBm, Datarate:1Mbps
@@ -83,7 +83,7 @@ void NRF24_Transmit (uint8_t *data)
 	CS_OFF();
 	
 	//delay 1
-	fifostatus = NRF24_ReadReg(FIFO_STATUS);
+	fifostatus = NRF24L01P_Read_Register(FIFO_STATUS);
 	if ((fifostatus & 0x10)==0x10)
 			{	
 				REG[0]=FLUSH_TX;
@@ -114,13 +114,38 @@ void NRF24_Rx_ini(void)
 	CE_ON();	
 }
 
-void NRF24_Receive (uint8_t *data)
+void NRF24_Receive (uint8_t *data,uint8_t size)
 {
+	uint8_t count=0 ;
 	uint8_t REG[1]={RD_RX_PLOAD};
 	CS_ON();
-	SPI_Transmit(REG,1);
 	
-	SPI_Receiver(data, TX_PLOAD_WIDTH);
+	SPI2->CR1 |= SPI_CR1_SPE;
+
+	while(!(READ_BIT(SPI2->SR, SPI_SR_TXE) == (SPI_SR_TXE))) {}
+	SPI2->DR = REG[0];
+	if(REG[0] == STATUS){
+		while(!(READ_BIT(SPI2->SR, SPI_SR_RXNE) == (SPI_SR_RXNE))) {}
+		data[0] =SPI2->DR;
+	}
+	else{
+		while(!(READ_BIT(SPI2->SR, SPI_SR_TXE) == (SPI_SR_TXE))) {}
+		while (SPI2->SR & SPI_SR_BSY);
+		SPI2->CR1 |= SPI_CR1_RXONLY;
+
+		while(!(READ_BIT(SPI2->SR, SPI_SR_RXNE) == (SPI_SR_RXNE))) {}
+		(void) SPI2->DR;
+		
+		while (count < size ) 
+		{
+		while(!(READ_BIT(SPI2->SR, SPI_SR_RXNE) == (SPI_SR_RXNE))) {}
+		data[count] = SPI2->DR;
+		count++;
+		}
+		SPI2->CR1 &= ~SPI_CR1_RXONLY;
+	}
+
+
 	CS_OFF();
 	//dalay1
 	REG[0]=FLUSH_RX;
@@ -138,8 +163,8 @@ uint8_t NRF24_ReadReg(uint8_t addr)
   RCC->APB1ENR |= RCC_APB1ENR_SPI2EN;
 	CS_ON();
   SPI_TransmitReceive(TxData,RxData,1);
-
-  if (addr!=STATUS)
+	
+  if (addr==STATUS)
   {
    cmd=0xFF;
    SPI_TransmitReceive(&cmd,RxData,1);
@@ -213,22 +238,35 @@ void NRF24_FlushTX(void)
 //------------------------------------------------
 
 
+uint8_t NRF24L01P_Read_Register(uint8_t RegAdd){
+	uint8_t READ_REG = 0;
+	SPI2->CR1 |= SPI_CR1_SPE;
+ 	CS_ON();
+
+	while(!(READ_BIT(SPI2->SR, SPI_SR_TXE) == (SPI_SR_TXE))) {}
+	SPI2->DR = RegAdd;
+	if(RegAdd == STATUS){
+		while(!(READ_BIT(SPI2->SR, SPI_SR_RXNE) == (SPI_SR_RXNE))) {}
+		READ_REG = SPI2->DR;
+	}
+	else{
+		while(!(READ_BIT(SPI2->SR, SPI_SR_TXE) == (SPI_SR_TXE))) {}
+		while (SPI2->SR & SPI_SR_BSY);
+		SPI2->CR1 |= SPI_CR1_RXONLY;
+
+		while(!(READ_BIT(SPI2->SR, SPI_SR_RXNE) == (SPI_SR_RXNE))) {}
+		(void) SPI2->DR;
 
 
+		while(!(READ_BIT(SPI2->SR, SPI_SR_RXNE) == (SPI_SR_RXNE))) {}
+		READ_REG = SPI2->DR;
+		CS_OFF();
+		SPI2->CR1 &= ~SPI_CR1_RXONLY;
+	}
 
+	return READ_REG;
 
-
-
-
-
-
-
-
-
-
-
-
-
+}
 
 
 

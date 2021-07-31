@@ -30,7 +30,7 @@ void SPI2_Init (void)
 	GPIOB->CRH &= ~GPIO_CRH_CNF15_0;
 	GPIOB->CRH |= GPIO_CRH_MODE15;
 	
-	//SPI2_Denit();
+	SPI2_Denit();
 	
 //Configuring the SPI in master mode
 //	Procedure
@@ -102,7 +102,7 @@ void CE_OFF(void)
 void SPI_TransmitReceive(uint8_t *TxData, uint8_t *RxData, uint8_t Size)
 {
 	//value of Size = so cap byte 1 trans + recei(da bao gom ca RxData Status)
-	int i=0;
+	int i=0,tmp=0;
 	/* Don't overwrite in case of HAL_SPI_STATE_BUSY_RX */
 	/* Enable SPI peripheral */
 	SPI2->CR1 |= SPI_CR1_SPE;//Peripheral enabled	
@@ -131,8 +131,9 @@ void SPI_TransmitReceive(uint8_t *TxData, uint8_t *RxData, uint8_t Size)
 				while (SPI2->SR & SPI_SR_BSY);					
 			}
 	/* Clear overrun flag in 2 Lines communication mode because received is not read */
-	(void)SPI2->DR;
-	(void)SPI2->SR;
+	while(!(READ_BIT(SPI2->SR, SPI_SR_RXNE) == (SPI_SR_RXNE))) {};
+		tmp=SPI2->DR;
+		tmp=SPI2->SR;
 	
 	//disabling the SPI.
 	SPI2->CR1 &= ~SPI_CR1_SPE;//Peripheral disabled

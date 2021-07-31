@@ -47,7 +47,7 @@
 void NRF24_Tx_ini(void);
 void NRF24_Transmit (uint8_t *data);
 void NRF24_Rx_ini(void);
-void NRF24_Receive (uint8_t *data);
+void NRF24_Receive (uint8_t *data,uint8_t size);
 void NRF24_reset(uint8_t REG);
 uint8_t NRF24_ReadReg(uint8_t addr);
 void NRF24_WriteReg(uint8_t addr, uint8_t dt);
@@ -58,7 +58,11 @@ void NRF24_FlushTX(void);
 void NRF24_FlushRX(void);
 void NRF24L01_RX_Mode(void);
 void NRF24L01_TX_Mode (void);
-void read_1_reg(uint8_t reg,uint8_t *Rxdata);
+uint8_t read_1_reg(uint8_t reg);
 void write_1_reg(uint8_t reg,uint8_t data);
 void NRF24L01P_SingleWrite_Register(uint8_t RegAdd, uint8_t Data);
+
 uint8_t NRF24L01P_Read_Register(uint8_t RegAdd);
+
+
+
